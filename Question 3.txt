@@ -1,0 +1,312 @@
+**********************************************************************************************************
+QUESTION 3(a)
+**********************************************************************************************************
+
+
+package org.newtest;
+import java.util.*;
+public class CruiseClass  {
+    public static void main(String[] args) 
+    {
+    MemberType ob;    	
+    	Scanner sc = new Scanner(System.in);
+        
+        Map<Integer,MemberType> mapValue = new HashMap<Integer,MemberType>();
+        
+        System.out.println("Enter the Number of Travelers You want On the Cruise");
+        
+        
+        int num = sc.nextInt();
+        
+        for(int i=1; i<=num; i++) 
+        {
+            mapValue.put(i, new MemberType());
+        }
+        
+        //System.out.println("The Values are: "+mapValue.toString());
+        
+        for(Map.Entry<Integer, MemberType> entry:mapValue.entrySet()){    
+            int key=entry.getKey();  
+            MemberType b=entry.getValue();  
+            System.out.println(key+" Data:");  
+            System.out.println("Name: " + b.name + "\nAge: " + b.age + "\nMember Type: " + b.memberTypes+"\nFees: "+b.fee);    
+            } 
+        
+       System.out.println(MemberType.countMembers());
+        
+    }
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+package org.newtest;
+import java.util.*;
+public class MemberType {
+    
+    int age;
+    String name;
+    int memberType;
+    String memberTypes;
+    static int countCrew,countAdult,countChild;
+    int fee;
+    
+    Scanner scan = new Scanner(System.in);
+    
+    public MemberType() 
+    {
+        System.out.println("Enter Your Age");
+        this.age=scan.nextInt();
+        System.out.println("Enter Your Name");
+        this.name=scan.next();
+        
+        if(age>20) {
+        
+            System.out.println("Type 1 for Crew Member or 2 for Adults");
+        
+            this.memberType=scan.nextInt();
+        
+    if(memberType==1) 
+        {
+            this.memberTypes="Crew";
+            countCrew++;
+            fee=0;
+        }
+        else if(memberType==2) 
+        {
+            this.memberTypes="Adult";
+            countAdult++;
+            fee=500;
+        }
+        }
+                else 
+        {
+            this.memberTypes="Children";
+            countChild++;
+            fee=250;
+        }
+        }
+     public static String countMembers() {
+        
+        return "Number of Crew Members: "+countCrew+"\nNumber of Adults: "+countAdult+"\nNumber of Children: "+countChild;
+    }   
+}
+
+
+
+******************************************************************************************************************
+OUTPUT
+******************************************************************************************************************
+
+Enter the Number of Travelers You want On the Cruise
+3
+Enter Your Age
+32
+Enter Your Name
+Aditya
+Type 1 for Crew Member or 2 for Adults
+1
+Enter Your Age
+23
+Enter Your Name
+Pawan
+Type 1 for Crew Member or 2 for Adults
+2
+Enter Your Age
+36
+Enter Your Name
+Sandeep
+Type 1 for Crew Member or 2 for Adults
+2
+1 Data:
+Name: Aditya
+Age: 32
+Member Type: Crew
+Fees: 0
+2 Data:
+Name: Pawan
+Age: 23
+Member Type: Adult
+Fees: 500
+3 Data:
+Name: Sandeep
+Age: 36
+Member Type: Adult
+Fees: 500
+Number of Crew Members: 1
+Number of Adults: 2
+Number of Children: 0
+
+
+**********************************************************************************************************
+QUESTION 3(b)
+**********************************************************************************************************
+
+
+package org.newtest;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class ToothPasteUsers {
+	public static void main(String[] args) 
+    {
+    ToothPaste ob;
+    Scanner sc = new Scanner(System.in);
+    Map<Integer,ToothPaste> mapValue = new HashMap<Integer,ToothPaste>();
+    
+    System.out.println("Enter the Number of users in the locality");
+    
+    
+    int num = sc.nextInt();
+    
+    for(int i=1; i<=num; i++) 
+    {
+        mapValue.put(i, new ToothPaste());
+    }
+    for(Map.Entry<Integer, ToothPaste> entry:mapValue.entrySet()){    
+        int key=entry.getKey();  
+        ToothPaste b=entry.getValue();  
+        System.out.println("User Details : "+key);  
+        System.out.println("Name: " + b.name + "\nAge: " + b.age + "\nToothPaste: " + b.paste);    
+        } 
+    
+   System.out.println(ToothPaste.Countusers());
+   System.out.println(ToothPaste.Maximum());
+}
+}
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+package org.newtest;
+import java.util.*;
+public class ToothPaste 
+{
+		String paste;
+		int age;
+		String name;
+		static int userscol,userspep,userspat,usersdab;
+		Scanner scan = new Scanner(System.in);
+		 public ToothPaste()
+		 {
+			 System.out.println("Enter your name");
+			 this.name = scan.next();
+			 System.out.println("Enter Your Age");
+		     this.age=scan.nextInt();
+		     System.out.println("Enter the brand of toothpaste");
+		     this.paste = scan.next();
+		     
+		     if(paste.equals("Colgate"))
+		     {
+		    	 userscol++;
+		     }
+		     else if(paste.equals("Pepsodent"))
+		     {
+		    	 userspep++;
+		     }
+		     else if(paste.equals("Patanjali"))
+		     {
+		    	 userspat++;
+		     }
+		     else
+		     {
+		    	 usersdab++;
+		     }
+		     
+		 }
+		 public static String Countusers()
+		 {
+			 return "Number of Colgate users : "+userscol+"\nNumber of Pepsodent users : "+userspep+"\nNumber of Patanjali users : "+userspat+"\nNumber of Dabur Red users : "+usersdab;
+		 }
+		 public static String Maximum()
+		 {
+			 if(userscol>userspep && userscol>userspat && userscol>usersdab)
+		     {
+		    	 return "Maximum Used Brand is Colgate";
+		     }
+		     else if(userspep>userscol && userspep>userspat && userspep>usersdab)
+		     {
+		    	 return"Maximum Used Brand is Pepsodent";
+		     }
+		     else if(userspat>userspep && userspat>userscol && userspat>usersdab)
+		     {
+		    	 return"Maximum Used Brand is Patanjali";
+		     }
+		     else
+		     {
+		    	 return "Maximum Used Brand is Dabur Red";
+		     } 
+		 }
+
+}
+
+
+
+
+**********************************************************************************************************
+OUTPUT
+**********************************************************************************************************
+
+Enter the Number of users in the locality
+5
+Enter your name
+Aditya
+Enter Your Age
+23
+Enter the brand of toothpaste
+Colgate
+Enter your name
+Sandeep
+Enter Your Age
+34
+Enter the brand of toothpaste
+Colgate
+Enter your name
+Pradeep
+Enter Your Age
+27
+Enter the brand of toothpaste
+Pepsodent
+Enter your name
+Suman
+Enter Your Age
+54
+Enter the brand of toothpaste
+Dabur Red
+Enter your name
+Riya
+Enter Your Age
+27
+Enter the brand of toothpaste
+Colgate
+User Details : 1
+Name: Aditya
+Age: 23
+ToothPaste: Colgate
+User Details : 2
+Name: Sandeep
+Age: 34
+ToothPaste: Colgate
+User Details : 3
+Name: Pradeep
+Age: 27
+ToothPaste: Pepsodent
+User Details : 4
+Name: Suman
+Age: 54
+ToothPaste: Dabur
+User Details : 5
+Name: Riya
+Age: 27
+ToothPaste: Colgate
+Number of Colgate users : 3
+Number of Pepsodent users : 1
+Number of Patanjali users : 0
+Number of Dabur Red users : 1
+Maximum Used Brand is Colgate

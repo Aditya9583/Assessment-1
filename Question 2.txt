@@ -1,0 +1,168 @@
+*********************************************************************************************************
+QUESTION 2
+*********************************************************************************************************
+
+
+package org.newtest;
+import java.util.*;
+public class RegularMember extends SilverMember 
+{
+	int type;
+	double Regularcalculate(int months)
+	{   
+		double total=0;
+		int golffee=20000;
+		total=golffee*months;
+		return total;
+	}
+	public RegularMember(int type) 
+	{
+		super();
+		this.type = type;
+	}
+	void membershiptype()
+	{ 
+		Scanner ob=new Scanner(System.in);
+		if(type!=3 |type!=1 |type!=2  )
+		{
+			System.out.println("enter the vaild type:");
+		}
+		if(type==1) 
+		{
+			System.out.println("Welcome to REGULAR membership");
+			System.out.println("enter the no of months");
+			int months=ob.nextInt();
+			if(months<=0)
+			{
+				System.out.println("enter the vaild months:");
+				months=ob.nextInt();
+			}
+			double total=Regularcalculate(months);
+			System.out.println("The total amount for "+months+"for the REGULAR MEMBER is Rs: "+total);	
+		}
+		if(type==2) 
+		{
+			System.out.println("Welcome to GOLD membership");
+			System.out.println("enter the no of months");
+			int months=ob.nextInt();
+			if(months<=0)
+			{
+				System.out.println("enter the vaild months:");
+				months=ob.nextInt();
+			}
+			double total=super.goldcalculate(months);
+			if(months<=6)
+			{
+				System.out.println("As you have obtained for less then 6 months i.e "+months+" so the total is RS:"+total);
+			}
+			else
+			{
+				System.out.println("As you have obtained for more then 6 months i.e "+months+" so the first 6 months are free. so chargeable months are " +(months-6)+ "so the total is RS:"+total);
+			}
+			
+		}
+		if(type==3) 
+		{
+			System.out.println("Welcome to SLIVER membership");
+			System.out.println("enter the no of months");
+			int months=ob.nextInt();
+			if(months<=0)
+			{
+				System.out.println("enter the vaild months:");
+				months=ob.nextInt();
+			}
+			double total=super.slivercalculate(months);
+			if(months<=6)
+			{
+				System.out.println("As you have obtained for less then 6 months i.e "+months+" so the total is RS:"+total);
+			}
+			else
+			{
+				System.out.println("As you have obtained for more then 6 months i.e "+months+" so the first 6 months are free. so chargeable months are " +(months-6)+ "so the total is RS:"+total);
+			}
+			
+		}
+
+	}
+	public static void main(String[] args) 
+	{
+		Scanner ob=new Scanner(System.in);
+		System.out.println("Enter YOUR name:");
+		String name=ob.next();
+		System.out.println("welcome :"+name);
+		System.out.println("Enter the type of membership REGULAR(1) , GOLD(2), SLIVER(3)");
+		int type=ob.nextInt();
+		RegularMember ob1=new RegularMember(type);
+		ob1.membershiptype();
+	}
+}
+
+
+------------------------------------------------------------------------------------------------------
+
+package org.newtest;
+
+public class SilverMember extends GoldMember
+{
+	double slivercalculate(int months)
+	{
+		double total=0;
+		final int memfee=15000;
+		final int enrollfee=5000;
+		int golffee=20000;
+		System.out.println("Welcome to SLIVER membership");
+		if(months<=6)
+		{
+			total=memfee+enrollfee;
+			
+		}
+		else
+		{
+			total=memfee+enrollfee;
+			total=total+(golffee*(months-6));
+			System.out.println("As you have obtained for more then 6 months i.e"+months+"so the first 6 months are free. so chargeable months are "+(months-6)+"so the total is RS:"+total);
+			
+		}
+		return total;
+	}
+}
+
+
+--------------------------------------------------------------------------------------------------------
+
+package org.newtest;
+public class GoldMember {
+	double goldcalculate(int months)
+	{
+		double total=0;
+		final int memfee=90000;
+		final int enrollfee=10000;
+		int golffee=10000;
+		
+		if(months<=6)
+		{
+			total=memfee+enrollfee;
+		}
+		else
+		{
+			total=memfee+enrollfee;
+			total=total+(golffee*(months-6));	
+		}
+		return total;
+	}
+}
+
+
+
+**********************************************************************************************************
+OUTPUT
+**********************************************************************************************************
+
+welcome :Aditya
+Enter the type of membership REGULAR(1) , GOLD(2), SLIVER(3)
+2
+enter the vaild type:
+Welcome to GOLD membership
+enter the no of months
+11
+As you have obtained for more then 6 months i.e 11 so the first 6 months are free. so chargeable months are 5so the total is RS:150000.0
